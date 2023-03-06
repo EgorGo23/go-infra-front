@@ -4,11 +4,14 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   mode: 'development',
   entry: {
-    main: './src/index.tsx',
+    main: path.resolve(__dirname, 'src', 'index.tsx'),
   },
   output: {
     path: path.resolve(__dirname, 'dist'),
     clean: true,
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
   },
   module: {
     rules: [
@@ -20,11 +23,11 @@ module.exports = {
     ],
   },
   devServer: {
-    hot: true,
+    port: 4552,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/public/index.html',
+      template: path.resolve(__dirname, 'src', 'public', 'index.html'),
     }),
   ],
 };
