@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User } from '@types';
 import './UserList.styles.scss';
+import { Button } from '../Button/Button';
 
 type UserListProps = {
   users: Array<User>;
@@ -25,15 +26,13 @@ export const UserList = ({ users, onRemoveUser }: UserListProps): JSX.Element =>
     <ul className="user-list">
       {users.map((user) => {
         return (
-          <li key={user.id} onClick={() => goToUserPage(user.id)} className="user-item">
-            <div className="user-item__name user-item-name">
+          <li key={user.id} className="user-item">
+            <div className="user-item__name user-item-name" onClick={() => goToUserPage(user.id)}>
               <span className="user-item-name__name">{user.name}</span>
               <span className="user-item-name__email subtitle">{user.email}</span>
             </div>
 
-            <button className="user-item__remove-btn" onClick={handleRemoveUser}>
-              Remove
-            </button>
+            <Button onClick={handleRemoveUser}>Remove</Button>
           </li>
         );
       })}

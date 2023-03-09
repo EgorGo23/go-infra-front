@@ -13,7 +13,7 @@
   cursor: pointer;
 
   &:hover {
-    border-bottom: 1px solid #6787e5;
+    border-bottom: 1px solid #2c7495;
   }
 
   & > .user-item__name {
@@ -23,20 +23,6 @@
 
     & > .user-item-name__email {
       color: #aba9a9;
-    }
-  }
-
-  & > .user-item__remove-btn {
-    padding: 0.5rem 1rem;
-    background-color: white;
-    border: 1px solid #aba9a9;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all ease-in 0.1s;
-
-    &:hover {
-      background-color: #aba9a9;
-      color: white;
     }
   }
 }

@@ -1,0 +1,13 @@
+.button {
+	padding: 0.5rem 1rem;
+	background-color: white;
+	border: 1px solid #aba9a9;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: all ease-in 0.1s;
+
+	&:not(:disabled):hover {
+		background-color: #aba9a9;
+		color: white;
+	}
+}
