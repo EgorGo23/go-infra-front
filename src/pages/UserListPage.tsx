@@ -2,19 +2,44 @@ import React, { useEffect, useState } from 'react';
 import { User } from '@types';
 import { UserList } from '@components';
 
-const USERS: Array<User> = [
-  { id: 1, name: 'Lax', email: 'abc@mail.ru' },
-  { id: 2, name: 'Rom', email: 'def@mail.ru' },
-  { id: 3, name: 'Ita', email: 'gls@mail.ru' },
-];
-
 export const UserListPage = () => {
   const [users, setUsers] = useState<Array<User>>([]);
 
-  const handleRemoveUser = async () => {};
+  const handleRemoveUser = async (userId: number) => {
+    try {
+      const response = await fetch(`${process.env.API_URL}/users/${userId}`, {
+        method: 'DELETE',
+      });
+
+      if (!response?.ok) {
+        const error = await response.json();
+
+        throw new Error(error.message);
+      }
+
+      setUsers((prevState) => prevState.filter(({ id }) => id !== userId));
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   useEffect(() => {
-    setUsers(USERS);
+    const fetchUsers = async () => {
+      try {
+        const response = await fetch(`${process.env.API_URL}/users`);
+        const responseData = await response.json();
+
+        if (!response?.ok) {
+          throw new Error(responseData.message);
+        }
+
+        setUsers(responseData);
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchUsers();
   }, []);
 
   return (

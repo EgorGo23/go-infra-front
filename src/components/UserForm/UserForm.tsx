@@ -3,7 +3,9 @@ import { User } from '@types';
 import './UserForm.styles.scss';
 import { Button } from '../Button/Button';
 
-type TUserForm = Omit<User, 'id'>;
+const INITIAL_USER_FORM = { name: '', email: '' };
+
+export type TUserForm = Omit<User, 'id'>;
 
 type UserFormProps = {
   mode?: 'read' | 'edit';
@@ -16,13 +18,15 @@ export const UserForm = ({
   onSubmit,
   initialValues,
 }: UserFormProps): JSX.Element => {
-  const [userForm, setUserForm] = useState<TUserForm>(initialValues ?? { name: '', email: '' });
+  const [userForm, setUserForm] = useState<TUserForm>(initialValues ?? INITIAL_USER_FORM);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
     if (onSubmit) {
       await onSubmit(userForm);
+
+      setUserForm(INITIAL_USER_FORM);
     }
   };
 
@@ -47,6 +51,7 @@ export const UserForm = ({
             id="name"
             name="name"
             placeholder="Enter name"
+            value={userForm.name}
             onChange={handleChangeUserForm}
           />
         )}
@@ -65,6 +70,7 @@ export const UserForm = ({
             id="email"
             name="email"
             placeholder="Enter email"
+            value={userForm.email}
             onChange={handleChangeUserForm}
           />
         )}

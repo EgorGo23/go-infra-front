@@ -6,7 +6,7 @@ import { Button } from '../Button/Button';
 
 type UserListProps = {
   users: Array<User>;
-  onRemoveUser: () => Promise<void>;
+  onRemoveUser: (userId: number) => Promise<void>;
 };
 
 export const UserList = ({ users, onRemoveUser }: UserListProps): JSX.Element => {
@@ -16,10 +16,8 @@ export const UserList = ({ users, onRemoveUser }: UserListProps): JSX.Element =>
     navigate(`/users/${id}`);
   };
 
-  const handleRemoveUser = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.stopPropagation();
-
-    await onRemoveUser();
+  const handleRemoveUser = async (userId: number) => {
+    await onRemoveUser(userId);
   };
 
   return (
@@ -32,7 +30,7 @@ export const UserList = ({ users, onRemoveUser }: UserListProps): JSX.Element =>
               <span className="user-item-name__email subtitle">{user.email}</span>
             </div>
 
-            <Button onClick={handleRemoveUser}>Remove</Button>
+            <Button onClick={() => handleRemoveUser(user.id)}>Remove</Button>
           </li>
         );
       })}
