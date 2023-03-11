@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, ChangeEvent } from 'react';
+import React, { FormEvent, useState, ChangeEvent, useEffect, useRef, Ref, RefObject } from 'react';
 import { User } from '@types';
 import './UserForm.styles.scss';
 import { Button } from '../Button/Button';
@@ -19,6 +19,7 @@ export const UserForm = ({
   initialValues,
 }: UserFormProps): JSX.Element => {
   const [userForm, setUserForm] = useState<TUserForm>(initialValues ?? INITIAL_USER_FORM);
+  const nameRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
@@ -36,6 +37,14 @@ export const UserForm = ({
 
   const isSubmitDisabled = !userForm.email || !userForm.name;
 
+  useEffect(() => {
+    nameRef.current?.focus();
+  }, [mode]);
+
+  useEffect(() => {
+    setUserForm(initialValues ?? INITIAL_USER_FORM);
+  }, [mode]);
+
   return (
     <form className="user-form" onSubmit={handleSubmit}>
       <div className="f-column m-bottom-16">
@@ -52,6 +61,7 @@ export const UserForm = ({
             name="name"
             placeholder="Enter name"
             value={userForm.name}
+            ref={nameRef}
             onChange={handleChangeUserForm}
           />
         )}
@@ -77,7 +87,7 @@ export const UserForm = ({
       </div>
 
       {mode === 'edit' && (
-        <Button type="submit" value="Отправить" disabled={isSubmitDisabled}>
+        <Button type="submit" disabled={isSubmitDisabled}>
           Send
         </Button>
       )}
