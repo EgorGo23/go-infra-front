@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 import { UserListPage, CreateUserPage, NotFoundPage, UserPage } from './pages';
 
@@ -10,7 +10,7 @@ function App() {
   return (
     <MainLayout>
       <Routes>
-        <Route path="/" element={<div>Root</div>} />
+        <Route path="/" element={<Navigate to="/users" />} />
         <Route path="/users" element={<UserListPage />} />
         <Route path="/users/:id" element={<UserPage />} />
         <Route path="/users/create" element={<CreateUserPage />} />

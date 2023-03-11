@@ -33,6 +33,30 @@
   flex-direction: row;
 }
 
+.justify {
+  &-start {
+    justify-content: flex-start;
+  }
+
+  &-centr {
+    justify-content: center;
+  }
+
+  &-between {
+    justify-content: space-between;
+  }
+}
+
+.align {
+  &-start {
+    align-items: flex-start;
+  }
+
+  &-centr {
+    align-items: center;
+  }
+}
+
 .m {
   &-left-8 {
     margin-left: 0.5rem;
