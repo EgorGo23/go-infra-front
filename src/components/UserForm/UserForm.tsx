@@ -1,4 +1,4 @@
-import React, { FormEvent, useState, ChangeEvent, useEffect, useRef, Ref, RefObject } from 'react';
+import React, { FormEvent, useState, ChangeEvent, useEffect, useRef } from 'react';
 import { User } from '@types';
 import './UserForm.styles.scss';
 import { Button } from '../Button/Button';

@@ -1,6 +1,6 @@
-@import "./reset.css";
-@import "./helpers.scss";
+@import './reset.css';
+@import './helpers.scss';
 
 html {
-    font-size: 100%;
+  font-size: 100%;
 }
