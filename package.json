@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "dev": "webpack serve",
+    "build": "webpack --config webpack.prod.config",
+    "dev": "webpack serve --config webpack.dev.config",
     "lint:ts": "npx tsc",
     "lint:js": "eslint src",
     "prettier:check": "prettier src --check",
