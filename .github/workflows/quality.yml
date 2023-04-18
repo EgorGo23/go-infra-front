@@ -22,7 +22,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'current'
+          node-version: '18.15.0'
 
       - name: Cache
         id: cache
@@ -47,7 +47,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'current'
+          node-version: '18.15.0'
 
       - name: Cache
         id: cache
@@ -73,7 +73,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 'current'
+          node-version: '18.15.0'
       - name: Cache
         id: cache
         uses: actions/cache@v3
