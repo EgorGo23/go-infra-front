@@ -1,9 +1,11 @@
 FROM node:18.15.0-alpine3.16
 
-COPY . .
+WORKDIR /app
 
-RUN npm ci
+COPY package.json .
 
-EXPOSE 4552
+RUN npm install
 
-CMD ["npm build"]
+COPY . /app
+
+RUN npm run build
