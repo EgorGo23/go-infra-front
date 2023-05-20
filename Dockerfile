@@ -1,11 +1,11 @@
 FROM node:18.15.0-alpine3.17
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 COPY package*.json ./
 
 RUN npm ci
 
-COPY ./ /app
+COPY . .
 
 RUN npm run build
