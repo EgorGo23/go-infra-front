@@ -4,7 +4,7 @@ services:
     image: node:18.15.0-alpine3.17
     working_dir: /usr/src/app
     ports:
-      - "4552:4552"
+      - ${LOCAL_PORT}:${LOCAL_PORT}
     volumes:
       - ".:/usr/src/app"
     command: sh -c "npm ci; npm run dev"
