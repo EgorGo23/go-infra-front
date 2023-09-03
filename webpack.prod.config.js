@@ -45,10 +45,6 @@ module.exports = {
       },
     ],
   },
-  devServer: {
-    historyApiFallback: true,
-    port: 4552,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'public', 'index.html'),
