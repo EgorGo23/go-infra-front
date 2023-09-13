@@ -4,6 +4,8 @@ WORKDIR /usr/src/app
 
 COPY package*.json ./
 
+ARG API_URL
+
 RUN npm ci
 
 COPY . .
