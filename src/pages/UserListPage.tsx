@@ -5,8 +5,6 @@ import { UserList } from '@components';
 export const UserListPage = () => {
   const [users, setUsers] = useState<Array<User>>([]);
 
-  console.log(process.env.API_URL);
-
   const handleRemoveUser = async (userId: number) => {
     try {
       const response = await fetch(`${process.env.API_URL}/users/${userId}`, {
@@ -47,6 +45,7 @@ export const UserListPage = () => {
   return (
     <div>
       <h1 className="m-bottom-24">Список пользователей</h1>
+      <div className="awf">{process.env.API_URL}</div>
       <UserList users={users} onRemoveUser={handleRemoveUser} />
     </div>
   );
