@@ -4,7 +4,8 @@ import { UserList } from '@components';
 
 export const UserListPage = () => {
   const [users, setUsers] = useState<Array<User>>([]);
-
+  console.log(process.env.API_URL);
+  
   const handleRemoveUser = async (userId: number) => {
     try {
       const response = await fetch(`${process.env.API_URL}/users/${userId}`, {
