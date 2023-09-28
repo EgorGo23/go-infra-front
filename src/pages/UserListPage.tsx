@@ -45,7 +45,6 @@ export const UserListPage = () => {
   return (
     <div>
       <h1 className="m-bottom-24">Список пользователей</h1>
-      <div className="awf">{process.env.API_URL}</div>
       <UserList users={users} onRemoveUser={handleRemoveUser} />
     </div>
   );

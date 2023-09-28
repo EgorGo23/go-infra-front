@@ -26,6 +26,8 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:${{ github.event.release.tag_name }}
+          build-args: |
+            API_URL=${{ secrets.API_URL }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
